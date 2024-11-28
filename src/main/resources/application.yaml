@@ -1,0 +1,49 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: spring-boot-javers
+  jpa:
+    open-in-view: false
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: ${SPRING_DATASOURCE_USERNAME:dev}
+    password: ${SPRING_DATASOURCE_PASSWORD:qwerty}
+    url:  ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/bookdb}
+
+
+javers:
+    sqlSchema:
+    sqlSchemaManagementEnabled: true
+    sqlGlobalIdCacheDisabled: false
+    objectAccessHook: org.javers.hibernate.integration.HibernateUnproxyObjectAccessHook
+    sqlGlobalIdTableName: jv_global_id #A table used to store a unique identifier for each change
+    sqlCommitTableName: jv_commit # A table containing information about the time and author of the data modification
+    sqlSnapshotTableName: jv_snapshot #This table stores information about which attributes of an entity have changed as a result of a given operation, along with the values of each attribute.
+    sqlCommitPropertyTableName: jv_commit_property #An additional table, which allows you to store additional information to the data from the previous table
+
+    mappingStyle: FIELD
+    algorithm: SIMPLE
+    commitIdGenerator: synchronized_sequence
+    prettyPrint: true
+    typeSafeValues: false
+    initialChanges: true
+    terminalChanges: true
+    packagesToScan:
+    auditableAspectEnabled: true
+    springDataAuditableRepositoryAspectEnabled: true
+    usePrimitiveDefaults: true
+    prettyPrintDateFormats:
+        localDateTime: 'dd MMM yyyy, HH:mm:ss'
+        zonedDateTime: 'dd MMM yyyy, HH:mm:ssZ'
+        localDate: 'dd MMM yyyy'
+        localTime: 'HH:mm:ss'
+
+
+
