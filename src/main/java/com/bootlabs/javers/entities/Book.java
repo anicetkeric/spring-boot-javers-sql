@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.javers.core.metamodel.annotation.ShallowReference;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -47,6 +48,7 @@ public class Book implements Serializable {
     @Column(name = "price")
     private BigDecimal price;
 
+    @ShallowReference
     @ManyToOne
     @JsonIgnoreProperties("books")
     private Author author;

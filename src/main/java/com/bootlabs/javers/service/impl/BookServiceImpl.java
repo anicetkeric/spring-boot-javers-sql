@@ -1,8 +1,9 @@
-package com.bootlabs.javers.service;
+package com.bootlabs.javers.service.impl;
 
 
 import com.bootlabs.javers.entities.Book;
 import com.bootlabs.javers.repositories.BookRepository;
+import com.bootlabs.javers.service.BookService;
 import org.javers.spring.annotation.JaversAuditableDelete;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

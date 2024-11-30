@@ -1,7 +1,8 @@
-package com.bootlabs.javers.service;
+package com.bootlabs.javers.service.impl;
 
 import com.bootlabs.javers.entities.Author;
 import com.bootlabs.javers.repositories.AuthorRepository;
+import com.bootlabs.javers.service.AuthorService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
